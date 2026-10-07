@@ -2061,7 +2061,7 @@ section{padding:110px 56px !important;}
         <div class="dash-section-label">Fun</div>
         <div class="dash-apps-grid">
 
-          <a class="dash-app-card" href="#" id="gamesFabCard" target="_self" onclick="return false;">
+          <a class="dash-app-card" href="https://arulv123.github.io/Ai-based-rock-paper-sissors/" id="gamesFabCard">
             <div class="dash-app-icon"><svg viewBox="0 0 24 24" width="38" height="38" stroke="#15181b" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="6"/><path d="M6.5 12h4M8.5 10v4"/><circle cx="15.5" cy="11" r=".7"/><circle cx="17.7" cy="13" r=".7"/></svg></div>
             <div class="dash-app-title">Games</div>
           </a>
@@ -3469,5 +3469,31 @@ window.addEventListener("pagehide", () => {
   if (img) img.src = data;
 })();
 </script>
+
+<!-- ZIPPY: force all navigational links to open in the same tab -->
+<script>
+(function(){
+  document.addEventListener("click", function(event){
+    if (event.button !== 0) return;
+    const link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+    if (!link) return;
+
+    const rawHref = link.getAttribute("href");
+    if (!rawHref || rawHref === "#" || /^javascript:/i.test(rawHref)) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    link.removeAttribute("target");
+
+    const destination = link.href;
+    if (/^(tel|mailto|sms):/i.test(destination)) {
+      window.location.href = destination;
+    } else {
+      window.location.assign(destination);
+    }
+  }, true);
+})();
+</script>
+
 </body>
 </html>
